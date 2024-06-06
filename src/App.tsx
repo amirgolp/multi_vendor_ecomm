@@ -1,11 +1,10 @@
 import React from 'react'
 
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Link } from 'react-router-dom'
 
 import ReactQueryProvider from './contextProviders/QueryClientProvider.tsx'
 import { ThemeProvider, useTheme } from './contextProviders/ThemeContext.tsx'
-import Login from './pages/Login'
-import Signup from './pages/Signup.tsx'
+import { AppRoutes } from './routes.tsx'
 
 const AppContent: React.FC = () => {
   const { toggleTheme, isDarkMode } = useTheme()
@@ -26,8 +25,7 @@ const AppContent: React.FC = () => {
         Switch to {isDarkMode ? 'Light' : 'Dark'} Mode
       </button>
       <Routes>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
+        <AppRoutes />
       </Routes>
     </>
   )
