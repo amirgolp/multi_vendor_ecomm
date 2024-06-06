@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { BrowserRouter as Router, Routes, Link } from 'react-router-dom'
+import KeycloakProvider from './contextProviders/KeycloakProvider.tsx'
 
 import ReactQueryProvider from './contextProviders/QueryClientProvider.tsx'
 import { ThemeProvider, useTheme } from './contextProviders/ThemeContext.tsx'
@@ -32,13 +33,15 @@ const AppContent: React.FC = () => {
 }
 
 const App: React.FC = () => (
-  <ReactQueryProvider>
-    <ThemeProvider>
-      <Router>
-        <AppContent />
-      </Router>
-    </ThemeProvider>
-  </ReactQueryProvider>
+  <KeycloakProvider>
+    <ReactQueryProvider>
+      <ThemeProvider>
+        <Router>
+          <AppContent />
+        </Router>
+      </ThemeProvider>
+    </ReactQueryProvider>
+  </KeycloakProvider>
 )
 
 export default App
